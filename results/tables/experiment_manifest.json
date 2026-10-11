@@ -1,0 +1,40 @@
+{
+  "random_state": 42,
+  "raw_rows": 12330,
+  "modeling_rows": 12205,
+  "train_rows": 9764,
+  "test_rows": 2441,
+  "features": [
+    "Administrative",
+    "Administrative_Duration",
+    "Informational",
+    "Informational_Duration",
+    "ProductRelated",
+    "BounceRates",
+    "ExitRates",
+    "SpecialDay",
+    "Month",
+    "OperatingSystems",
+    "Browser",
+    "Region",
+    "TrafficType",
+    "VisitorType",
+    "Weekend"
+  ],
+  "duplicates_removed": 125,
+  "train_index_sha256": "bb85626c045a222da72b7a2529ec9c39b17c5c9ab6044e3f39f0dbc2fa4e5b62",
+  "test_index_sha256": "b79bdcbefb7cf0804cd93680939586c8c9ef3b74b5bc2fe9babc0d422378cd95",
+  "data_sha256": "a4423a5b6e43d3a523b2a9f6bb7e164c461e518bfe973ac0e058454cf4a29da0",
+  "python": "3.11.9",
+  "versions": {
+    "numpy": "2.2.6",
+    "pandas": "2.3.3",
+    "scikit-learn": "1.7.2",
+    "scipy": "1.16.3",
+    "matplotlib": "3.10.7",
+    "ucimlrepo": "0.0.7"
+  },
+  "cv_folds": 5,
+  "cv_n_jobs": 1,
+  "blas_threads": 1
+}
