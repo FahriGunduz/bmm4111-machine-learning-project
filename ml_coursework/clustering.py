@@ -82,10 +82,14 @@ def run_clustering(frame, train_indices, test_indices, output_dir: Path):
     fig, axes = plt.subplots(1, 2, figsize=(11, 4))
     for ax, coordinates, labels, title in [(axes[0], train_pca, train_labels, "Eğitim"),
                                            (axes[1], test_pca, test_labels, "Test atamaları")]:
-        ax.scatter(coordinates[:, 0], coordinates[:, 1], c=labels, cmap="tab10", s=8, alpha=.4)
+        for cluster in range(chosen_k):
+            selected = labels == cluster
+            ax.scatter(coordinates[selected, 0], coordinates[selected, 1],
+                       color=plt.cm.tab10(cluster), s=8, alpha=.4, label=f"Küme {cluster}")
         ax.set_title(title)
         ax.set_xlabel("PC1")
         ax.set_ylabel("PC2")
+        ax.legend(markerscale=2, fontsize=8)
     save_figure(figures / "cluster_pca.png")
     save_json({"selected_k": chosen_k, "elbow_chord_k": elbow_k,
                "selection_rule": "Maksimum eğitim silhouette; dirsek eğrisi yardımcı tanı olarak raporlanır.",
