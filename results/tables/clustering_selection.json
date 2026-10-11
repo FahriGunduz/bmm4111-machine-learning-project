@@ -1,0 +1,24 @@
+{
+  "selected_k": 3,
+  "elbow_chord_k": 4,
+  "selection_rule": "Maksimum eğitim silhouette; dirsek eğrisi yardımcı tanı olarak raporlanır.",
+  "silhouette_sample_size": 1500,
+  "silhouette_seed": 42,
+  "pca_explained_variance_ratio": [
+    0.2373704927636298,
+    0.13505310063945372
+  ],
+  "pca_note": "PCA yalnız görselleştirme içindir; iki boyut bütün küme kalitesini göstermez.",
+  "categorical_distance_note": "Kümelemede tüm one-hot kategorileri korunur; nominal kodlara sıralı uzaklık atanmaz.",
+  "parameters": {
+    "algorithm": "lloyd",
+    "copy_x": true,
+    "init": "k-means++",
+    "max_iter": 300,
+    "n_clusters": 3,
+    "n_init": 10,
+    "random_state": 42,
+    "tol": 0.0001,
+    "verbose": 0
+  }
+}

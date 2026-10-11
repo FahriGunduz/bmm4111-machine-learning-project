@@ -15,14 +15,14 @@ def task_features(frame: pd.DataFrame, task: str) -> pd.DataFrame:
     return frame.loc[:, FEATURE_COLUMNS].copy()
 
 
-def build_preprocessor(scale: bool = True) -> ColumnTransformer:
+def build_preprocessor(scale: bool = True, drop_first: bool = True) -> ColumnTransformer:
     numeric = [c for c in FEATURE_COLUMNS if c not in CATEGORICAL_COLUMNS]
     steps = [("imputer", SimpleImputer(strategy="median"))]
     if scale:
         steps.append(("scaler", StandardScaler()))
     categorical = Pipeline([
         ("imputer", SimpleImputer(strategy="most_frequent")),
-        ("encoder", OneHotEncoder(handle_unknown="ignore", sparse_output=False, drop="first")),
+        ("encoder", OneHotEncoder(handle_unknown="ignore", sparse_output=False, drop="first" if drop_first else None)),
     ])
     return ColumnTransformer([
         ("numeric", Pipeline(steps), numeric),
@@ -30,5 +30,5 @@ def build_preprocessor(scale: bool = True) -> ColumnTransformer:
     ], remainder="drop", verbose_feature_names_out=True)
 
 
-def build_pipeline(estimator, scale: bool = True) -> Pipeline:
-    return Pipeline([("preprocessor", build_preprocessor(scale)), ("model", estimator)])
+def build_pipeline(estimator, scale: bool = True, drop_first: bool = True) -> Pipeline:
+    return Pipeline([("preprocessor", build_preprocessor(scale, drop_first)), ("model", estimator)])
